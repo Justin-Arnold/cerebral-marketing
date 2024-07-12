@@ -1,6 +1,10 @@
 ---
-
+import NeuralHead from "../components/NeuralHead.vue"
 ---
+
+<script>
+
+</script>
 
 <html lang="en">
 	<head>
@@ -12,8 +16,28 @@
 		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 	</head>
 	<body>
-		<div class="fixed top-0 left-0 h-12 bg-slate-500 flex items-center w-full p-4">
-			<span class="text-white text-lg font-semibold">Cerebral</span>
+		<div class="h-screen mt-12">
+			<div class="fixed top-0 left-0 h-12 bg-slate-500 flex items-center w-full p-4">
+				<span class="text-white text-lg font-semibold">🧠</span>
+			</div>
+			<div class="h-full grid place-items-center">
+				<div class="h-[700px] flex items-center justify-center w-full">
+				  <div class="flex flex-col gap-0 items-center">
+					<div class="text-[144px] font-light font-serif text-white leading-none">
+						Cerebral
+					</div>
+					<div class="text-xl">
+						A homelab dashboard that is truly mind-expanding
+					</div>
+					<div class="w-full flex gap-2 mt-8">
+						<input class="h-10 rounded bg-slate-50 text-slate-900 p-2 grow"/>
+						<button class="w-fit border border-slate-100 rounded px-4 h-10 hover:scale-105 active:scale-95 transition duration-150">Sign up for Emails</button>
+					</div>
+				  </div>
+				  <NeuralHead client:only/>
+				</div>
+			  </div>
+			
 		</div>
 	</body>
 </html>
