@@ -86,7 +86,7 @@ const initBackground = () => {
   Background.renderer.setClearColor(0x000000, 0);
 
   container.appendChild(Background.renderer.domElement);
-  container.addEventListener('mousemove', onDocumentMouseMove);
+  window.addEventListener('mousemove', onDocumentMouseMove);
   window.addEventListener('resize', onWindowResize);
 
   function onWindowResize() {
@@ -157,7 +157,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   const container = particleHeadRef.value;
   if (container) {
-    container.removeEventListener('mousemove', onDocumentMouseMove);
+    window.removeEventListener('mousemove', onDocumentMouseMove);
     window.removeEventListener('resize', onWindowResize);
   }
 });
