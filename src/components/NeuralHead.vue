@@ -1,26 +1,38 @@
 <script lang="ts" setup>
 import * as THREE from 'three';
+import type { PerspectiveCamera, Scene, WebGLRenderer } from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { gsap } from 'gsap';
 import { onMounted, ref, onBeforeUnmount } from 'vue';
 
-let site = {
+const site = {
   Width: 0,
   Height: 0,
 };
 
-let Background = {
+const Background: {
+  camera: PerspectiveCamera | null;
+  scene: Scene | null;
+  renderer: WebGLRenderer | null;
+  animate: (() => void) | null;
+  ticker: typeof gsap.ticker | null;
+} = {
   camera: null,
   scene: null,
   renderer: null,
   animate: null,
   ticker: null,
-};
+}
 
-const particleHeadRef = ref(null);
+const particleHeadRef = ref<HTMLDivElement>();
 
 const initBackground = () => {
   const container = particleHeadRef.value;
+
+  if (!container) {
+    throw Error("Container not initialized") //todo - give better errors
+  }
+
   site.Width = container.clientWidth;
   site.Height = container.clientHeight;
 
@@ -61,8 +73,15 @@ const initBackground = () => {
     });
 
     const p = new THREE.Points(p_geom, p_material);
+    if (!Background.scene) {
+      throw Error("Scene missing.")
+    }
     Background.scene.add(p);
   });
+
+  if (!Background.renderer) {
+    throw Error("Renderer missing.")
+  }
 
   Background.renderer = new THREE.WebGLRenderer({ alpha: true });
   Background.renderer.setSize(site.Width, site.Height);
@@ -73,6 +92,18 @@ const initBackground = () => {
   window.addEventListener('resize', onWindowResize);
 
   function onWindowResize() {
+    if (!container) {
+      throw Error("Container not initialized") //todo - give better errors
+    }
+
+    if (!Background.camera) {
+      throw Error("Container not initialized") //todo - give better errors
+    }
+
+    if (!Background.renderer) {
+      throw Error("Renderer not initialized") //todo - give better errors
+    }
+
     site.Width = container.clientWidth;
     site.Height = container.clientHeight;
     windowHalfX = site.Width / 2;
@@ -84,12 +115,23 @@ const initBackground = () => {
     Background.renderer.setSize(site.Width, site.Height);
   }
 
-  function onDocumentMouseMove(event) {
+  function onDocumentMouseMove(event: MouseEvent) {
     mouseX = (event.clientX - windowHalfX) / 2;
     mouseY = (event.clientY - windowHalfY) / 2;
   }
 
   function render() {
+    if (!Background.camera) {
+      throw Error("Container not initialized") //todo - give better errors
+    }
+
+    if (!Background.scene) {
+      throw Error("Scene not initialized") //todo - give better errors
+    }
+
+    if (!Background.renderer) {
+      throw Error("Renderer not initialized") //todo - give better errors
+    }
     // Background.camera.position.x += ((-mouseX * 0.5) - Background.camera.position.x) * 0.05;
     // Background.camera.position.y += ((mouseY * 0.5) - Background.camera.position.y) * 0.05;
 
