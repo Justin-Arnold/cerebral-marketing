@@ -79,9 +79,7 @@ const initBackground = () => {
     Background.scene.add(p);
   });
 
-  if (!Background.renderer) {
-    throw Error("Renderer missing.")
-  }
+
 
   Background.renderer = new THREE.WebGLRenderer({ alpha: true });
   Background.renderer.setSize(site.Width, site.Height);
@@ -168,9 +166,3 @@ onBeforeUnmount(() => {
 <template>
   <div ref="particleHeadRef" class="particlehead h-full aspect-square"></div>
 </template>
-
-<style>
-  .particlehead {
-    height: 100%;
-  }
-</style>
