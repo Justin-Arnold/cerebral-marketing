@@ -24,6 +24,7 @@
   "devDependencies": {
     "@iconify-json/jam": "^1.1.8",
     "@iconify-json/mdi": "^1.1.67",
+    "@tailwindcss/forms": "^0.5.7",
     "@types/bun": "^1.1.6",
     "@types/three": "^0.166.0",
     "daisyui": "^4.12.10"

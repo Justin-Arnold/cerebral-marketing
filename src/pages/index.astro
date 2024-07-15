@@ -7,7 +7,7 @@ import Header from "../components/Header.astro"
 
 </script>
 
-<html lang="en">
+<html lang="en" data-theme="norde">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -16,22 +16,23 @@ import Header from "../components/Header.astro"
 		<title>Astro</title>
 		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 	</head>
-	<body>
+	<body class="bg-neutral">
 		<div class="h-screen mt-12">
 			<Header />
 			<div class="h-full grid place-items-center">
 				<div class="h-[700px] flex items-center justify-center w-full">
-				  <div class="flex flex-col gap-0 items-center">
-					<div class="text-[144px] font-light font-serif text-white leading-none">
+				  <div class="flex flex-col gap-0 items-center h-full">
+					<div class="text-[144px] font-light font-serif text-white leading-none mt-20">
 						Cerebral
 					</div>
 					<div class="text-xl">
 						A homelab dashboard that is truly mind-expanding
 					</div>
 					<div class="w-full flex gap-2 mt-8">
-						<input class="h-10 rounded bg-slate-50 text-slate-900 p-2 grow"/>
-						<button class="w-fit border border-slate-100 rounded px-4 h-10 hover:scale-105 active:scale-95 transition duration-150">Sign up for Emails</button>
+						<input class="input grow"/>
+						<button class="btn btn-primary">Sign up for Emails</button>
 					</div>
+				
 				  </div>
 				  <NeuralHead client:only/>
 				</div>

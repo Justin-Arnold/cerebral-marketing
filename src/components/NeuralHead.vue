@@ -133,8 +133,8 @@ const initBackground = () => {
     // Background.camera.position.x += ((-mouseX * 0.5) - Background.camera.position.x) * 0.05;
     // Background.camera.position.y += ((mouseY * 0.5) - Background.camera.position.y) * 0.05;
 
-    Background.camera.position.x += ((mouseX * 0.5) - Background.camera.position.x) * 0.05;
-    Background.camera.position.y += (-(mouseY * 0.5) - Background.camera.position.y) * 0.05;
+    Background.camera.position.x += ((mouseX * 0.5) - Background.camera.position.x) * 0.005;
+    Background.camera.position.y += (-(mouseY * 0.5) - Background.camera.position.y) * 0.005;
 
     Background.camera.lookAt(Background.scene.position);
 
