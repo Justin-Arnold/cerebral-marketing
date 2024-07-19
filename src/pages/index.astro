@@ -1,11 +1,8 @@
 ---
 import NeuralHead from "../components/NeuralHead.vue"
+import EmailForm from "../components/EmailForm.vue"
 import Header from "../components/Header.astro"
 ---
-
-<script>
-
-</script>
 
 <html lang="en" data-theme="norde">
 	<head>
@@ -16,7 +13,7 @@ import Header from "../components/Header.astro"
 		<title>Astro</title>
 		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 	</head>
-	<body class="bg-neutral">
+	<body class="bg-neutral overflow-hidden">
 		<div class="h-screen mt-12">
 			<Header />
 			<div class="h-full grid place-items-center">
@@ -28,11 +25,7 @@ import Header from "../components/Header.astro"
 					<div class="text-xl">
 						A homelab dashboard that is truly mind-expanding
 					</div>
-					<div class="w-full flex gap-2 mt-8">
-						<input class="input grow"/>
-						<button class="btn btn-primary">Sign up for Emails</button>
-					</div>
-				
+					<EmailForm client:only/>
 				  </div>
 				  <NeuralHead client:only/>
 				</div>
